@@ -9,10 +9,11 @@ function M.setup(opts)
 
   ---Add a key to get hints for
   ---@param key string
-  function M.add_hint_key(key)
+  ---@param buffer number|boolean?
+  function M.add_hint_key(key, buffer)
     vim.keymap.set('n', config.hint_leader .. key, function()
       window.hint_window(key)
-    end, { desc = 'Hints for ' .. key_handling.map_special_names(key) .. ' key' })
+    end, { desc = 'Hints for ' .. key_handling.map_special_names(key) .. ' key', buffer = buffer})
   end
 
   ---Show the hint window for this key

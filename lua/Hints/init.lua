@@ -21,7 +21,6 @@ function M.setup(opts)
     window.hint_window(lead)
   end
 
-  print(#config.hint_keys)
   for i, key in ipairs(config.hint_keys) do
     M.add_hint_key(key)
   end

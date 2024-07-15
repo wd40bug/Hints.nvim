@@ -25,9 +25,7 @@ local config = DEFAULT_SETTINGS
 ---Set config from user opts
 ---@param opts HintsSettings
 function M.set(opts)
-  print(vim.inspect(config.hint_keys))
   config = vim.tbl_deep_extend("force", config, opts)
-  print(vim.inspect(config.hint_keys))
   table.insert(config.hint_keys, config.hint_leader)
 end
 

@@ -32,7 +32,7 @@ Provided is the default configuration
 ```lua
 require("Hints").setup( {
   
-  max_len = 50, -- number: Maximum width of the hint window. Descriptions that go beyond this will be truncated and can be accessed with `:Hint lhs`
+  max_width = 50, -- number: Maximum width of the hint window. Descriptions that go beyond this will be truncated and can be accessed with `:Hint lhs`
 
   hint_leader = 'f', -- string: Leader for hints, when pressed before a key in hint_keys will show the hint dialogue for that key
 

@@ -22,8 +22,8 @@ function M.hint_window(lead)
       local str = value.lhs .. string.rep(' ', 3 + longest_lhs - #value.lhs) .. tostring(value.desc)
       value.str_len = #str
       --TODO: Why was this minus 3?
-      if value.str_len > config.max_len then
-        str = string.sub(str, 1, config.max_len - (10 + longest_lhs)) .. '... :Hint ' .. value.lhs
+      if value.str_len > config.max_width then
+        str = string.sub(str, 1, config.max_width - (10 + longest_lhs)) .. '... :Hint ' .. value.lhs
       end
       value.str = str
       return value
@@ -43,8 +43,8 @@ function M.hint_window(lead)
   -- Add tags for trimmed options
   -- TODO: Is this even used?
   for i, key in ipairs(keymap_table) do
-    if key.str_len > config.max_len - 3 then
-      vim.api.nvim_buf_add_highlight(hint_buf, -1, "Tag", i-1, config.max_len - (longest_lhs + 6), -1)
+    if key.str_len > config.max_width - 3 then
+      vim.api.nvim_buf_add_highlight(hint_buf, -1, "Tag", i-1, config.max_width - (longest_lhs + 6), -1)
     end
   end
 
@@ -58,7 +58,7 @@ function M.hint_window(lead)
 
   M.close_window() --Close previous window if it exists
   local title = keys.map_special_names(lead) .. ' Hints'
-  local window_width = math.min(math.max(longest_line, #title), config.max_len)
+  local window_width = math.min(math.max(longest_line, #title), config.max_width)
   local ui = vim.api.nvim_list_uis()[1]
   window_handle = vim.api.nvim_open_win(hint_buf, false, {
     relative = 'editor',

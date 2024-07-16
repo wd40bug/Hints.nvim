@@ -2,19 +2,19 @@ local M = {}
 
 
 ---@class HintsSettings
----@field max_len number Maximum length of text in the hint window
+---@field max_width number Maximum length of text in the hint window
 ---@field hint_leader string If pressed before a key in `hint_keys`, shows help text for that key
 ---@field special_names {[string]: string} Whenever lhs would be printed, replace with rhs
 ---@field hint_keys string[] Keys to provide hints for
 ---@field clear_mapping string Mapping to close hint window (will be prepended with the hint_leader automatically)
 local DEFAULT_SETTINGS = {
-  max_len = 50,
+  max_width = 50,
 
   hint_leader = 'f',
 
   special_names = { [" "]= "<Space>" },
 
-  hint_keys = {vim.g.mapleader},
+  hint_keys = {},
 
   clear_mapping = "/",
   

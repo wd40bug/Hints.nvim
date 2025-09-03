@@ -12,6 +12,13 @@ function M.hint_window(lead)
   local keymap_iter = keys.get_all_keymaps_starting_with(lead):map(function(v)
     v.lhs = keys.map_special_names(v.lhs); return v
   end)
+  if lead == config.hint_leader then
+    local keymap_table = keymap_iter:totable()
+    table.sort(keymap_table, function (a, b)
+      return a.lhs == config.hint_leader .. config.clear_mapping or a.lhs < b.lhs
+    end)
+    keymap_iter = vim.iter(keymap_table)
+  end
 
   local longest_lhs = keymap_iter:fold(0, function(acc, val)
     return math.max(acc, #val.lhs)

@@ -3,7 +3,7 @@ local window = require('Hints.window')
 local key_handling = require('Hints.key_handling')
 local M = {}
 
----@param opts HintsSettings
+---@param opts HintsSettingsOption
 function M.setup(opts)
   config.set(opts)
 
